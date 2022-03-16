@@ -4,6 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "mocha --exit",
     "build:css": "npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch"
   },
