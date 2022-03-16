@@ -36,7 +36,7 @@ app.use(
 );
 app.use(flash());
 
-app.listen(port, () => {
+app.listen(process.env.PORT || port, () => {
   console.log(`Listen at http://localhost:${port}`);
 });
 
