@@ -29,7 +29,7 @@
             <% let index = 1%>
             <% if (bank.length == 0) { %>
              <tr>
-              <td colspan="5" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
+              <td colspan="6" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
                 Data kosong
               </td>
             </tr>
@@ -49,7 +49,7 @@
                   <%= data.name %>
                 </td>
                 <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
-                  <img src="http://127.0.0.1:3000/<%= data.imageUrl%>" alt="<%= data.imageUrl%>" w class="w-20" />
+                  <img src="https://backend-staycation-yayak.herokuapp.com/<%= data.imageUrl%>" alt="<%= data.imageUrl%>" w class="w-20" />
                 </td>
                 <td class="py-4 px-6 text-sm font-medium whitespace-nowrap">
                   <a href="/admin/bank/edit/<%= data._id %>" class="inline-block bg-yellow-400 hover:bg-yellow-500 py-1 px-2 w-8 h-8 rounded-full">
