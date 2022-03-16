@@ -5,7 +5,7 @@ const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || "8080";
 
 // require route
 const indexRouter = require("./router/index");
@@ -36,8 +36,8 @@ app.use(
 );
 app.use(flash());
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`Listen at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Listen at http://localhost:${PORT}`);
 });
 
 // routing
