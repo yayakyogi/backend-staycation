@@ -1,0 +1,23 @@
+<div class="md:p-8 p-4">
+  <%- include("../../alert.ejs")%>
+  <h1 class="md:text-5xl text-3xl text-gray-900 md:mb-10 mb-5">Edit Category</h1>
+  <div class="sm:w-3/4 lg:w-1/3 xl:w-1/4  w-full bg-white px-4 py-6 rounded-md shadow-md">
+    <form action="/admin/category?_method=PUT" method="post">
+      <input type="hidden" name="oldName" value="<%= category.oldName || category.name %>"/>
+      <input type="hidden" name="_id" value="<%= category._id%>" />
+      <div class="mb-6">
+        <label for="name" class="block mb-3 text-sm font-medium text-gray-900">Nama Kategori</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" value="<%= category.name%>" required />
+      </div>
+      <!--Footer-->
+      <div class="flex justify-end pt-2">
+        <a href="/admin/category" class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" type="button">
+          Batal
+        </a>
+        <button class="px-4 bg-blue-700 p-3 rounded-lg text-white hover:bg-blue-600" type="submit">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

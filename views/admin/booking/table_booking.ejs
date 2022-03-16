@@ -1,0 +1,83 @@
+<div class="min-w-full">
+  <div class="overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden ">
+        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+          <thead class="bg-gray-300 ">
+            <tr>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                #
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Invoice
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Date
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Title
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Name Member
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Status
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% let index = 1;%>
+            <% if (booking.length === 0) { %>
+            <tr>
+              <td colspan="6" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
+                Data kosong
+              </td>
+            </tr>
+            <% } %>
+            <% let options = {year: 'numeric', month: 'long', day: 'numeric' };%>
+            <% booking.forEach(data => { %>
+            <tr class="hover:bg-gray-100">
+              <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap"><%= index++ %></td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                <%= `#${data.invoice}` %>
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                <%= `${data.bookingStartDate.toLocaleString('id-ID',options)} s/d ${data.bookingEndDate.toLocaleString('id-ID',options)}` %>
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                <%= data.itemId.title%>
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                <%= data.memberId.firstName%>
+              </td>
+              <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                <% if (data.payments.status === 'accepted') { %>
+                <div class="bg-green-200 text-black px-3 py-1 rounded-md inline">
+                  <%= data.payments.status%>
+                </div>
+                <% } else if (data.payments.status === 'rejected') { %>
+                <div class="bg-red-300 text-black px-3 py-1 rounded-md inline">
+                  <%= data.payments.status%>
+                </div>
+                <% } else {%>
+                <div class="bg-yellow-400 text-black px-3 py-1 rounded-md inline">
+                  <%= data.payments.status%>
+                </div>
+                <% } %>
+              </td>
+              <td class="py-4 px-6 text-sm font-medium whitespace-nowrap">
+                <a href="/admin/booking/<%= data._id %>" class="inline-block bg-green-600 hover:bg-green-700 py-1 pl-1.5 w-8 h-8 rounded-full">
+                <i class="fa fa-eye text-white text-base" aria-hidden="true"></i>
+                </a>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

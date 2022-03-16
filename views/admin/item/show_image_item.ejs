@@ -1,0 +1,13 @@
+<div class="md:p-8 p-4">
+  <h1 class="text-5xl text-gray-900 mb-10">Image Item</h1>
+  <div class="md:flex block justify-start items-start">
+    <%imageItems.forEach(imageItem => { %>
+      <div class="bg-white p-4 rounded-lg md:mr-4 mb-4 shadow-md">
+        <img src="http://127.0.0.1:3000/<%= imageItem.imageUrl%>" class="w-full"/>
+      </div>
+    <% }) %>
+  </div>
+  <a href="/admin/item" class="inline-block text-black bg-yellow-400 hover:bg-yellow-500 focus:ring-2 focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mt-4">
+    Kembali
+  </a>
+</div>

@@ -1,0 +1,81 @@
+<div class="md:w-9/12 w-full">
+  <div class="overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden ">
+        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+          <thead class="bg-gray-200 ">
+            <tr>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                &#x2116;
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Admin
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Username
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Email
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                No Handphone
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Role
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% let index = 1%>
+            <% if (admin.length == 0) { %>
+             <tr>
+              <td colspan="5" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
+                Data kosong
+              </td>
+            </tr>
+            <% } %>
+            <% admin.forEach(data => { %>
+              <tr class="hover:bg-gray-100">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                  <%= index++ %>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= data.name%>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= data.username%>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= data.email%>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= data.nomorHandphone%>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= data.role%>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium whitespace-nowrap">
+                  <a href="/superadmin/admin/edit/<%= data._id %>" class="inline-block bg-yellow-400 hover:bg-yellow-500 py-1 px-2 w-8 h-8 rounded-full">
+                    <i class="fa fa-pencil-square-o text-white text-base" aria-hidden="true"></i>
+                  </a>
+                  <form action="/superadmin/admin?_method=DELETE" method="post" class="inline">
+                    <input type="hidden" name="_id" value="<%= data._id %>"/>
+                    <button class="inline-block bg-red-400 hover:bg-red-500 py-1 px-2 w-8 h-8 rounded-full" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                      <i class="fa fa-trash-o text-white text-base" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                  <a href="/superadmin/admin/edit-password/<%= data._id %>" class="inline-block bg-slate-400 hover:bg-slate-500 py-1 px-2 w-8 h-8 rounded-full">
+                    <i class="fa fa-lock text-white text-base" aria-hidden="true"></i>
+                  </a>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

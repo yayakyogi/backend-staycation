@@ -1,0 +1,54 @@
+<div class="xl:w-8/12 w-full">
+  <div class="overflow-x-auto shadow-md sm:rounded-lg">
+    <div class="inline-block min-w-full align-middle">
+      <div class="overflow-hidden ">
+        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+          <thead class="bg-gray-200 ">
+            <tr>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-2">
+              &#x2116;
+              </th>
+              <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase w-96">
+              Nama
+              </th>
+              <th scope="col" class="py-3 px-7 text-xs font-medium tracking-wider text-gray-700 uppercase w-20 text-left">
+              Action
+              </th>
+            </tr>
+          </thead>
+          <tbody class="bg-white divide-y divide-gray-200">
+            <% let index = 1 %>
+            <% if (category.length == 0) { %>
+              <tr>
+               <td colspan="3" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
+                 Data kosong
+               </td>
+             </tr>
+             <% } %>
+            <% category.forEach(cat => { %>
+              <tr class="hover:bg-gray-50">
+                <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                  <%= index++ %>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                  <%= cat.name %>
+                </td>
+                <td class="py-4 px-6 text-sm font-medium whitespace-nowrap text-left">
+                  <a href="/admin/category/edit/<%= cat._id %>" class="inline-block bg-yellow-400 hover:bg-yellow-500 py-1 px-2 w-8 h-8 rounded-full">
+                    <i class="fa fa-pencil-square-o text-white text-base" aria-hidden="true"></i>
+                  </a>
+                  <form action="/admin/category?_method=DELETE" method="post" class="inline">
+                    <input type="hidden" name="_id" value="<%= cat._id %>"/>
+                    <button href="#"class="inline-block bg-red-400 hover:bg-red-500 py-1 px-2 w-8 h-8 rounded-full" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                      <i class="fa fa-trash-o text-white text-base" aria-hidden="true"></i>
+                    </button> 
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

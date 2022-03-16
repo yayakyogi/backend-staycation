@@ -1,0 +1,64 @@
+<div class="md:p-8 p-4">
+  <%- include("../../alert.ejs")%>
+
+  <h1 class="text-5xl text-gray-900 mb-10">Detail Booking</h1>
+  
+  <div class="bg-white rounded-lg p-8 shadow-md">
+    <div class="sm:flex block justify-start items-start">
+      <img src="http://localhost:3000/<%= booking.payments.proofPayment%>" width="350"/>
+      <div class="ml-5">
+        <h1 class="text-3xl font-semibold mb-3">Booking Information</h1>
+        <table class="mb-5">
+          <tr>
+            <td width="150" class="md:text-lg text-base font-medium">Invoice</td>
+            <td class="md:text-lg text-base font-normal">: <%= `#${booking.invoice}`%></td>
+          </tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Member</td>
+            <td class="md:text-lg text-base font-normal">: <%= booking.memberId.firstName%> <%= booking.memberId.lastName%></td>
+          </tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Booking</td>
+            <td class="md:text-lg text-base font-normal">: 
+              <% let options = {year: 'numeric', month: 'long', day: 'numeric' }%>
+              <%= `${booking.bookingStartDate.toLocaleString('id-ID',options)} s/d ${booking.bookingEndDate.toLocaleString('id-ID',options)}`%>
+            </td>
+          </tr>
+          <tr><td><h1 class="text-2xl font-thin">Item</h1></td></tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Title</td>
+            <td class="md:text-lg text-base font-normal">: <%= booking.itemId.title%></td>
+          </tr>
+          
+          <tr>
+            <td class="md:text-lg text-base font-medium">Price</td>
+            <td class="md:text-lg text-base font-normal">: <%= `$${booking.itemId.price}`%></td>
+          </tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Duration</td>
+            <td class="md:text-lg text-base font-normal">: <%= booking.itemId.duration%> <%= booking.itemId.duration < 1 ? 'night' : 'nights' %></td>
+          </tr>
+          <tr><td><h1 class="text-2xl font-thin">Payment</h1></td></tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Transfer From</td>
+            <td class="md:text-lg text-base font-normal">: <%= booking.payments.bankFrom%></td>
+          </tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Account Holder</td>
+            <td class="md:text-lg text-base font-normal">: <%= booking.payments.accountHolder%> <%= booking.memberId.lastName%></td>
+          </tr>
+          <tr>
+            <td class="md:text-lg text-base font-medium">Total</td>
+            <td class="md:text-lg text-base font-normal">: $<%= booking.total%></td>
+          </tr>
+        </table>
+        <a href="/admin/booking/accept/<%= booking._id%>" class="inline-block px-4 py-2 bg-green-600 hover:bg-green-700 text-white rounded-md">
+          Accept
+        </a>
+        <a href="/admin/booking/reject/<%= booking._id%>" class="inline-block px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-md">
+          Reject
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

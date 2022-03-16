@@ -1,0 +1,39 @@
+<div class="md:p-8 p-4">
+  <%- include("../../alert.ejs")%>
+  <h1 class="md:text-5xl text-3xl text-gray-900 md:mb-10 mb-5">Edit Bank</h1>
+  <div class="sm:w-3/4 lg:w-1/3 xl:w-96 w-full bg-white px-4 py-6 rounded-md shadow-md">
+    <form action="/admin/bank?_method=PUT" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="oldName" value="<%= bank.oldName || bank.nameBank %>" />
+      <input type="hidden" name="_id" value="<%= bank._id%>" />
+      <input type="hidden" name="imageUrl" value="<%= bank.imageUrl%>" />
+      <div class="mb-3">
+        <label for="nameBank" class="block mb-3 text-sm font-medium text-gray-900">Nama Bank</label>
+        <input type="text" id="nameBank" name="nameBank" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" value="<%= bank.nameBank %>" required />
+      </div>
+      <div class="mb-3">
+        <label for="nomorRekening" class="block mb-3 text-sm font-medium text-gray-900">Nomor Rekening</label>
+        <input type="text" id="nomorRekening" name="nomorRekening" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" value="<%= bank.nomorRekening %>" required />
+      </div>
+      <div class="mb-3">
+        <label for="name" class="block mb-3 text-sm font-medium text-gray-900">Nama Pemilik Rekening</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" value="<%= bank.name %>" required />
+      </div>
+      <div class="mb-3">
+        <label for="image" class="block mb-3 text-sm font-medium text-gray-900">Logo Bank</label>
+        <img src="http://127.0.0.1:3000/<%= bank.imageUrl%>" alt="<%= bank.imageUrl%>" width="100" />
+      </div>
+      <div class="mb-6">
+        <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer focus:outline-none focus:border-transparent p-2" id="user_avatar" name="image" type="file">
+        <div class="mt-1 text-xs text-gray-500">Klik <span class="text-gray-500 font-semibold">Choose file</span> untuk mengganti logo</div>
+      </div>
+      <div class="flex justify-end pt-2">
+        <a href="/admin/bank" class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" type="button">
+          Batal
+        </a>
+        <button class="px-4 bg-blue-700 p-3 rounded-lg text-white hover:bg-blue-600" type="submit">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

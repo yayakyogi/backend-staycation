@@ -1,0 +1,43 @@
+<div class="md:p-8 p-4">
+  <%- include("../../alert.ejs")%>
+  <h1 class="md:text-5xl text-3xl text-gray-900 md:mb-10 mb-5">Tambah Admin</h1>
+  <div class="sm:w-3/4 lg:w-1/3 xl:w-96 w-full bg-white px-4 py-6 rounded-md shadow-md">
+    <form action="/superadmin/admin" method="post">
+      <div class="mb-3">
+        <label for="name" class="block mb-3 text-sm font-medium text-gray-900">Nama Admin</label>
+        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" required />
+      </div>
+      <div class="mb-3">
+        <label for="nomorHandphone" class="block mb-3 text-sm font-medium text-gray-900">No Handphone</label>
+        <input type="text" id="nomorHandphone" name="nomorHandphone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nomor handphone" required/>
+      </div>
+      <div class="mb-6">
+        <label for="email" class="block mb-3 text-sm font-medium text-gray-900">Email</label>
+        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan email aktif" required/>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="block mb-3 text-sm font-medium text-gray-900">Username</label>
+        <input type="text" id="username" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan username" required />
+      </div>
+      <div class="mb-3">
+        <label for="password" class="block mb-3 text-sm font-medium text-gray-900">Password</label>
+        <input type="password" id="password" name="password" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan password" required />
+      </div>
+      <div class="mb-6">
+        <label for="role" class="block mb-2 text-sm font-medium text-gray-900">Role</label>
+        <select id="role" name="role" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+          <option value="admin">Admin</option>
+          <option value="superadmin">SuperAdmin</option>
+        </select>
+      </div>
+      <div class="flex justify-end pt-2">
+        <a href="/superadmin/admin" class="px-4 bg-transparent p-3 rounded-lg text-blue-500 hover:bg-gray-100 hover:text-blue-400 mr-2" type="button">
+          Batal
+        </a>
+        <button class="px-4 bg-blue-700 p-3 rounded-lg text-white hover:bg-blue-600" type="submit">
+          Simpan
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

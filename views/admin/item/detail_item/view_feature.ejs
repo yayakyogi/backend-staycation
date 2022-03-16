@@ -1,0 +1,110 @@
+<div class="md:p-8 p-4">
+  <%- include("../../../alert.ejs")%>
+
+  <h1 class="text-5xl text-gray-900 mb-2">Detail Item</h1>
+  <h2 class="mb-10 text-xl text-gray-500 font-medium">&#x27B2; <%= item.title%></h2>
+
+  <ul class="flex flex-wrap border-b border-gray-300 mb-3">
+    <li class="mr-2">
+      <p href="#" aria-current="page" class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-600 bg-gray-200 rounded-t-lg">Show Feature</p>
+    </li>
+    <li class="mr-2">
+      <a href="/admin/item/activity/<%= itemId%>" class="inline-block py-4 px-4 text-sm font-medium text-center text-blue-600 rounded-t-lg  hover:bg-gray-50">Show Activity</a>
+    </li>
+  </ul>
+
+  <div class="md:flex block">
+    <!-- add featuure -->
+    <div class="md:w-1/3 w-full bg-white px-4 pt-3 pb-6 rounded-md shadow-md">
+      <h1 class="text-2xl mb-5 font-medium">Tambah Feature</h1>
+      <form action="/admin/item/feature/add" method="post" enctype="multipart/form-data">
+        <input type="hidden" name="itemId" value="<%= itemId%>"/>
+        <div class="mb-3">
+          <label for="name" class="block mb-3 text-sm font-base text-gray-900">Name</label>
+          <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" required />
+        </div>
+        <div class="mb-3">
+          <label for="qty" class="block mb-3 text-sm font-base text-gray-900">QTY</label>
+          <input type="number" id="qty" name="qty" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Masukkan nama kategori" required />
+        </div>
+        <div class="mb-6">
+          <label for="image" class="block mb-3 text-sm font-base text-gray-900">Image</label>
+          <input type="file" id="image" name="image" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" />
+        </div>
+        <button class="pt-2 px-4 bg-blue-700 p-3 rounded-lg text-white hover:bg-blue-600" type="submit">
+          Simpan
+        </button>
+      </form>
+    </div>
+    <!-- end add feature -->
+    <!-- table feature -->
+    <div class="w-full ml-5">
+      <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="inline-block min-w-full align-middle">
+          <div class="overflow-hidden ">
+            <table class="min-w-full divide-y divide-gray-200 table-fixed">
+              <thead class="bg-gray-200 ">
+                <tr>
+                  <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                    &#x2116;
+                  </th>
+                  <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                    Name
+                  </th>
+                  <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                    QTY
+                  </th>
+                  <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                    Image URL
+                  </th>
+                  <th scope="col" class="py-3 px-6 text-xs font-medium tracking-wider text-left text-gray-700 uppercase">
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200">
+                <% let index = 1%>
+                <% if (features.length == 0) { %>
+                 <tr>
+                  <td colspan="6" class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap text-center">
+                    Data kosong
+                  </td>
+                </tr>
+                <% } %>
+                <% features.forEach(feature => { %>
+                  <tr class="hover:bg-gray-100">
+                    <td class="py-4 px-6 text-sm font-medium text-gray-900 whitespace-nowrap">
+                      <%= index++ %>
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                      <%= feature.name %>
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                      <%= feature.qty %>
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium text-gray-500 whitespace-nowrap">
+                      <img src="http://127.0.0.1:3000/<%= feature.imageUrl%>" width="50" />
+                    </td>
+                    <td class="py-4 px-6 text-sm font-medium whitespace-nowrap">
+                      <a href="/admin/item/feature/edit/<%= feature._id %>" class="inline-block bg-yellow-400 hover:bg-yellow-500 py-1 px-2 w-8 h-8 rounded-full">
+                        <i class="fa fa-pencil-square-o text-white text-base" aria-hidden="true"></i>
+                      </a>
+                      <form action="/admin/item/feature/delete?_method=DELETE" method="post" class="inline">
+                        <input type="hidden" name="_id" value="<%= feature._id %>"/>
+                        <input type="hidden" name="itemId" value="<%= feature.itemId%>"/>
+                        <button type="submit" class="inline-block bg-red-400 hover:bg-red-500 py-1 px-2 w-8 h-8 rounded-full" onclick="return confirm('Anda yakin ingin menghapus data ini?')">
+                          <i class="fa fa-trash-o text-white text-base" aria-hidden="true"></i>
+                        </button>
+                      </form>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end table feature -->
+  </div>
+</div>
