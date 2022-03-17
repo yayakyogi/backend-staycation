@@ -14,27 +14,27 @@ const superadminRouter = require("./router/superadmin");
 const apiRouter = require("./router/api");
 
 // koneksi database
-// require("./utils/db");
+require("./utils/db");
 
 // konfigurasi ejs
-// app.set("view engine", "ejs");
-// app.use(expressLayout);
-// app.use(express.static(__dirname + "/public"));
-// app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
+app.use(expressLayout);
+app.use(express.static(__dirname + "/public"));
+app.use(express.urlencoded({ extended: true }));
 
 // konfigurasi http method
-// app.use(methodOverride("_method"));
+app.use(methodOverride("_method"));
 // konfigurasi flash
-// app.use(cookieParser());
-// app.use(
-//   session({
-//     cookie: { maxAge: 1 * 60 * 60 * 1000 },
-//     secret: "secret",
-//     resave: false,
-//     saveUninitialized: true,
-//   })
-// );
-// app.use(flash());
+app.use(cookieParser());
+app.use(
+  session({
+    cookie: { maxAge: 1 * 60 * 60 * 1000 },
+    secret: "secret",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
+app.use(flash());
 
 // routing
 // app.use("/", indexRouter);
