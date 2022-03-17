@@ -38,9 +38,9 @@ app.use(flash());
 
 // routing
 // app.use("/", indexRouter);
-app.use("/admin", adminRouter);
-app.use("/superadmin", superadminRouter);
-app.use("/api/v1/member", apiRouter);
+// app.use("/admin", adminRouter);
+// app.use("/superadmin", superadminRouter);
+// app.use("/api/v1/member", apiRouter);
 
 app.get("/", (req, res) => {
   res.send("Hellow World!");
@@ -56,7 +56,7 @@ app.get("*", (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, () => {
-  console.log(`Listen at http://localhost:${PORT}`);
+  console.log(`Listen at http://localhost:3000`);
 });
 
 module.exports = app;
