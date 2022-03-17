@@ -4,14 +4,16 @@ const methodOverride = require("method-override");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
+const cors = require("cors");
 const app = express();
-const port = 3000;
 
 // require route
 const indexRouter = require("./router/index");
 const adminRouter = require("./router/admin");
 const superadminRouter = require("./router/superadmin");
 const apiRouter = require("./router/api");
+
+app.use(cors());
 
 // koneksi database
 require("./utils/db");
