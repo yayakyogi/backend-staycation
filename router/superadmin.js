@@ -1,7 +1,9 @@
 const router = require("express").Router();
 const adminController = require("../controllers/superadmin_controller/adminController");
+const auth = require("../middlewares/auth");
 
 // end point admin
+router.use(auth);
 router.get("/admin", adminController.viewAdmin);
 router.get("/admin/add", adminController.viewAddAdmin);
 router.post("/admin", adminController.addAdmin);
