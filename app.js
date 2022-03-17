@@ -39,7 +39,7 @@ const adminRouter = require("./router/admin");
 // const apiRouter = require("./router/api");
 
 // routing
-router.get("/", (req, res, next) => {
+app.get("/", (req, res, next) => {
   res.send("OKE");
 });
 app.use("/admin", adminRouter);
