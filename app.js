@@ -43,7 +43,7 @@ const apiRouter = require("./router/api");
 // app.use("/api/v1/member", apiRouter);
 
 app.get("/", (req, res) => {
-  res.send("Hellow World!");
+  res.render("index");
 });
 
 app.use("/", (req, res) => {
