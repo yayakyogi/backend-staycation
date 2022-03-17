@@ -47,13 +47,13 @@ app.get("/", (req, res) => {
 });
 
 // handle page not found
-app.get("*", (req, res) => {
-  res.status(404);
-  res.render("404", {
-    title: "Halaman tidak ditemukan",
-    layout: "404",
-  });
-});
+// app.get("*", (req, res) => {
+//   res.status(404);
+//   res.render("404", {
+//     title: "Halaman tidak ditemukan",
+//     layout: "404",
+//   });
+// });
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Listen at http://localhost:3000`);
