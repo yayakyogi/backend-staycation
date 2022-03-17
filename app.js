@@ -40,6 +40,9 @@ const adminRouter = require("./router/admin");
 
 // routing
 app.use("/", indexRouter);
+app.get("/coba", (req, res) => {
+  res.send("route coba");
+});
 app.use("/admin", adminRouter);
 // app.use("/superadmin", superadminRouter);
 // app.use("/api/v1/member", apiRouter);
