@@ -14,7 +14,7 @@ const superadminRouter = require("./router/superadmin");
 const apiRouter = require("./router/api");
 
 // koneksi database
-require("./utils/db");
+// require("./utils/db");
 
 // konfigurasi ejs
 app.set("view engine", "ejs");
