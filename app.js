@@ -34,13 +34,13 @@ app.use(flash());
 
 // require route
 const indexRouter = require("./router/index");
-// const adminRouter = require("./router/admin");
+const adminRouter = require("./router/admin");
 // const superadminRouter = require("./router/superadmin");
 // const apiRouter = require("./router/api");
 
 // routing
 app.use("/", indexRouter);
-// app.use("/admin", adminRouter);
+app.use("/admin", adminRouter);
 // app.use("/superadmin", superadminRouter);
 // app.use("/api/v1/member", apiRouter);
 
