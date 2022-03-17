@@ -63,6 +63,7 @@ const port = 3000;
 
 const indexRouter = require("./router/index");
 app.use("/", indexRouter);
+app.use("/admin", adminRouter);
 
 // app.get("/", (req, res) => {
 //   res.send("Hello World!");
