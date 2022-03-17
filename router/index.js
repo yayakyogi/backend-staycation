@@ -3,7 +3,7 @@ const router = express.Router();
 
 // GET home page
 router.get("/", (req, res, next) => {
-  res.send("OKE");
+  res.redirect("/admin/signin");
 });
 
 module.exports = router;
