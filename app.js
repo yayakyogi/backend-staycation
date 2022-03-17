@@ -36,10 +36,6 @@ app.use(
 );
 app.use(flash());
 
-app.listen(PORT, () => {
-  console.log(`Listen at http://localhost:${PORT}`);
-});
-
 // routing
 // app.use("/", indexRouter);
 app.use("/admin", adminRouter);
@@ -57,6 +53,10 @@ app.get("*", (req, res) => {
     title: "Halaman tidak ditemukan",
     layout: "404",
   });
+});
+
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Listen at http://localhost:${PORT}`);
 });
 
 module.exports = app;
