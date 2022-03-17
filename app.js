@@ -44,7 +44,7 @@ app.use("/admin", adminRouter);
 app.use("/superadmin", superadminRouter);
 app.use("/api/v1/member", apiRouter);
 
-// handle page not found
+// handle page not foun
 app.get("*", (req, res) => {
   res.status(404);
   res.render("404", {
