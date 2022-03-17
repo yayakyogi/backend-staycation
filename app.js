@@ -34,7 +34,7 @@ app.use(flash());
 
 // require route
 const indexRouter = require("./router/index");
-const adminRouter = require("./router/admin");
+// const adminRouter = require("./router/admin");
 // const superadminRouter = require("./router/superadmin");
 // const apiRouter = require("./router/api");
 
@@ -42,7 +42,7 @@ const adminRouter = require("./router/admin");
 app.get("/", (req, res, next) => {
   res.send("OKE");
 });
-app.use("/admin", adminRouter);
+// app.use("/admin", adminRouter);
 // app.use("/superadmin", superadminRouter);
 // app.use("/api/v1/member", apiRouter);
 
