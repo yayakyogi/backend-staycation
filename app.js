@@ -62,6 +62,8 @@ const app = express();
 const port = 3000;
 
 const indexRouter = require("./router/index");
+const adminRouter = require("./router/admin");
+
 app.use("/", indexRouter);
 app.use("/admin", adminRouter);
 
