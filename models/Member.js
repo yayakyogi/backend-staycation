@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { string } = require("postcss-selector-parser");
 
 const Member = mongoose.model("Member", {
   firstName: {

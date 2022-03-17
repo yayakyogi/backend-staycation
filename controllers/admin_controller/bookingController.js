@@ -1,5 +1,4 @@
 const Booking = require("../../models/Booking");
-const Member = require("../../models/Member");
 
 module.exports = {
   // View Booking
