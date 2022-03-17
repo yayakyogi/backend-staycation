@@ -39,7 +39,9 @@ const adminRouter = require("./router/admin");
 // const apiRouter = require("./router/api");
 
 // routing
-app.use("/", indexRouter);
+router.get("/", (req, res, next) => {
+  res.send("OKE");
+});
 app.use("/admin", adminRouter);
 // app.use("/superadmin", superadminRouter);
 // app.use("/api/v1/member", apiRouter);
