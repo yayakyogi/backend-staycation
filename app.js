@@ -64,12 +64,11 @@ const port = 3000;
 const indexRouter = require("./router/index");
 const adminRouter = require("./router/admin");
 
-app.use("/", indexRouter);
-app.use("/admin", adminRouter);
+app.get("/", (req, res) => {
+  res.redirect("/admin/signin");
+});
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
+app.use("/admin", adminRouter);
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening on port ${port}`);
