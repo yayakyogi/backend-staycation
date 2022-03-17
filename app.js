@@ -37,28 +37,19 @@ app.use(
 app.use(flash());
 
 // routing
-// app.use("/", indexRouter);
-// app.use("/admin", adminRouter);
-// app.use("/superadmin", superadminRouter);
-// app.use("/api/v1/member", apiRouter);
-
-app.get("/", (req, res) => {
-  res.render("index");
-});
-
-app.use("/", (req, res) => {
-  res.status(404);
-  res.send("<h1>404</h1>");
-});
+app.use("/", indexRouter);
+app.use("/admin", adminRouter);
+app.use("/superadmin", superadminRouter);
+app.use("/api/v1/member", apiRouter);
 
 // handle page not found
-// app.get("*", (req, res) => {
-//   res.status(404);
-//   res.render("404", {
-//     title: "Halaman tidak ditemukan",
-//     layout: "404",
-//   });
-// });
+app.get("*", (req, res) => {
+  res.status(404);
+  res.render("404", {
+    title: "Halaman tidak ditemukan",
+    layout: "404",
+  });
+});
 
 app.listen(process.env.PORT || port, () => {
   console.log(`Example app listening on port ${port}`);
