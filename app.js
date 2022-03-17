@@ -41,10 +41,14 @@ app.listen(PORT, () => {
 });
 
 // routing
-app.use("/", indexRouter);
+// app.use("/", indexRouter);
 app.use("/admin", adminRouter);
 app.use("/superadmin", superadminRouter);
 app.use("/api/v1/member", apiRouter);
+
+app.get("/", (req, res) => {
+  res.send("Hellow World!");
+});
 
 // handle page not found
 app.get("*", (req, res) => {
