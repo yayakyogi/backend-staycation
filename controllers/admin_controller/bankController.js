@@ -124,7 +124,7 @@ module.exports = {
       const bank = await Bank.findOne({
         _id: _id,
       });
-      await fs.unlink(path.join(`public/images/online/${bank.imageUrl}`));
+      await fs.unlink(path.join(`public/${bank.imageUrl}`));
       await bank.remove();
       req.flash("alertStatus", "success");
       req.flash("alertMessage", "Sukses menghapus bank");
@@ -132,7 +132,7 @@ module.exports = {
     } catch (error) {
       req.flash("alertStatus", "error");
       req.flash("alertMessage", `${error.message}`);
-      res.redirect(`/admin/bank/edit/${_id}`);
+      res.redirect(`/admin/bank/${_id}`);
     }
   },
 };
