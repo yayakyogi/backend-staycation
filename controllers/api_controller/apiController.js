@@ -5,6 +5,8 @@ const Category = require("../../models/Category");
 const Bank = require("../../models/Bank");
 const Member = require("../../models/Member");
 const Booking = require("../../models/Booking");
+const createError = require("http-errors");
+const mongoose = require("mongoose");
 
 module.exports = {
   // end point landing page
@@ -75,7 +77,7 @@ module.exports = {
   },
 
   // end point detail page
-  detailPage: async (req, res) => {
+  detailPage: async (req, res, next) => {
     try {
       const { id } = req.params;
       const [item, bank] = await Promise.all([
@@ -87,6 +89,10 @@ module.exports = {
         // Get data Bank
         Bank.find(),
       ]);
+
+      if (!item) {
+        throw createError(404, "Item not found!");
+      }
 
       const testimonial = {
         _id: "asd1293uasdads1",
@@ -105,12 +111,16 @@ module.exports = {
         testimonial,
       });
     } catch (error) {
-      res.status(500).json({ message: `${error.message}` });
+      if (error instanceof mongoose.CastError) {
+        next(createError(400, "Invalid Product id"));
+        return;
+      }
+      next(error);
     }
   },
 
   // end point booking
-  bookingPage: async (req, res) => {
+  bookingPage: async (req, res, next) => {
     try {
       const {
         itemId,
@@ -126,26 +136,15 @@ module.exports = {
       } = req.body;
 
       if (!req.file) {
-        return res.status(404).json({ message: "Image not found!" });
-      }
-
-      if (
-        itemId === undefined ||
-        duration === undefined ||
-        bookingDateStart === undefined ||
-        bookingDateEnd === undefined ||
-        firstName === undefined ||
-        lastName === undefined ||
-        email === undefined ||
-        phoneNumber === undefined ||
-        accountHolder === undefined ||
-        bankFrom === undefined
-      ) {
-        return res.status(404).json({ message: "Lengkapi semua field!" });
+        throw createError(404, "Image not found!");
       }
 
       // ambil item berdasarkan itemId
       const item = await Item.findOne({ _id: itemId });
+
+      if (!item) {
+        throw createError(404, "Item not found!");
+      }
       // update sumBooking
       item.sumBooking += 1;
       // update item sumBooking
@@ -190,7 +189,14 @@ module.exports = {
 
       res.status(200).json({ message: "Success booking", booking });
     } catch (error) {
-      res.status(500).json({ message: `${error.message}` });
+      if (error instanceof mongoose.CastError) {
+        next(createError(400, "Invalid Item id"));
+        return;
+      } else if (error.name === "ValidationError") {
+        next(createError(422, error.message));
+        return;
+      }
+      next(error);
     }
   },
 };

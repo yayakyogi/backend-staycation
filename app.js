@@ -53,6 +53,17 @@ app.get("*", (req, res) => {
   });
 });
 
+// handle error
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.json({
+    error: {
+      status: err.status || 500,
+      message: err.message,
+    },
+  });
+});
+
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Example app listening on port 3000`);
 });
