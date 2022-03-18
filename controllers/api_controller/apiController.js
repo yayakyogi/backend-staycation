@@ -38,25 +38,13 @@ module.exports = {
 
       // ubah is popular jika data itemId ke 0 === itemId looping index ke 0
       // data Category.itemId di sorting dari yang terbesar
-      // for (let i = 0; i < category.length; i++) {
-      //   for (let x = 0; x < category[i].itemId.length; x++) {
-      //     const item = await Item.findOne({ _id: category[i].itemId[x]._id });
-      //     item.isPopular = false;
-      //     await item.save();
-      //     if (category[i].itemId[0]) {
-      //       item.isPopular = true;
-      //       await item.save();
-      //     }
-      //   }
-      // }
-
       for (let i = 0; i < category.length; i++) {
         for (let x = 0; x < category[i].itemId.length; x++) {
           const item = await Item.findOne({ _id: category[i].itemId[x]._id });
           item.isPopular = false;
           await item.save();
           if (category[i].itemId[0] === category[i].itemId[x]) {
-            item.isPopular = false;
+            item.isPopular = true;
             await item.save();
           }
         }
