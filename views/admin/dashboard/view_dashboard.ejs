@@ -3,20 +3,20 @@
   <div class="md:flex block justify-between items-center">
     <div class="md:mr-5 mr-0 mb-5 px-5 py-7 border-l-4 border-blue-600 rounded-md bg-white shadow-lg w-full">
       <h1 class="mb-2 font-semibold text-2xl text-blue-700">Member</h1>
-      <p class="text-lg text-green-800 font-medium">2</p>
+      <p class="text-lg text-green-800 font-medium"><%= countData.member%></p>
     </div>
     <div class="md:mr-5 mr-0 mb-5 px-5 py-7 border-l-4 border-green-600 rounded-md bg-white shadow-lg w-full">
       <h1 class="mb-2 font-semibold text-2xl text-green-700">Order</h1>
-      <p class="text-lg text-green-800 font-medium">2</p>
+      <p class="text-lg text-green-800 font-medium"><%= countData.order%></p>
     </div>
     <div class="md:mr-5 mr-0 mb-5 px-5 py-7 border-l-4 border-cyan-600 rounded-md bg-white shadow-lg w-full">
       <h1 class="mb-2 font-semibold text-2xl text-cyan-700">Item</h1>
-      <p class="text-lg text-green-800 font-medium">2</p>
+      <p class="text-lg text-green-800 font-medium"><%= countData.item%></p>
     </div>
     <% if (user.role === 'superadmin') { %>
       <div class="md:mr-5 mr-0 mb-5 px-5 py-7 border-l-4 border-orange-600 rounded-md bg-white shadow-lg w-full">
         <h1 class="mb-2 font-semibold text-2xl text-orange-700">Admin</h1>
-        <p class="text-lg text-green-800 font-medium">2</p>
+        <p class="text-lg text-green-800 font-medium"><%= countData.admin%></p>
       </div>
     <% } %>
   </div>

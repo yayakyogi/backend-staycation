@@ -1,5 +1,8 @@
 const bcrypt = require("bcryptjs");
 const User = require("../models/User");
+const Member = require("../models/Member");
+const Item = require("../models/Item");
+const Booking = require("../models/Booking");
 
 module.exports = {
   // Sign In
@@ -64,11 +67,26 @@ module.exports = {
   },
 
   // Dashboard
-  viewDashboard: (req, res) => {
+  viewDashboard: async (req, res) => {
+    const [member, order, item, admin] = await Promise.all([
+      Member.find(),
+      Booking.find(),
+      Item.find(),
+      User.find(),
+    ]);
+
+    const countData = {
+      member: member.length,
+      order: order.length,
+      item: item.length,
+      admin: admin.length,
+    };
+
     res.render("admin/dashboard/view_dashboard", {
       title: "Halaman index",
       layout: "layouts/main-layouts",
       user: req.session.user,
+      countData,
     });
   },
 
