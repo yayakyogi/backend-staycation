@@ -7,7 +7,7 @@ const flash = require("connect-flash");
 const cors = require("cors");
 const app = express();
 
-app.use(cors());
+// app.use(cors());
 
 // koneksi database
 require("./utils/db");

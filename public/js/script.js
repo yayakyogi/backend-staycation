@@ -1,3 +1,15 @@
+const buttonOpen = document.getElementById("buttonOpen");
+const buttonClose = document.getElementById("buttonClose");
+const sidebar = document.getElementById("sidebar");
+
+buttonOpen.addEventListener("click", () => {
+  sidebar.classList.toggle("hidden");
+});
+
+buttonClose.addEventListener("click", () => {
+  sidebar.classList.toggle("hidden");
+});
+
 // var openModal = document.querySelectorAll(".modal-open");
 
 // for (var i = 0; i < openModal.length; i++) {
