@@ -136,7 +136,7 @@ module.exports = {
       } = req.body;
 
       if (!req.file) {
-        throw createError(403, "Image not found!");
+        throw createError(404, "Image not found!");
       }
 
       // ambil item berdasarkan itemId
