@@ -166,8 +166,8 @@ module.exports = {
 
       // variabel data booking baru
       const newBooking = {
-        bookingStartDate: new Date(bookingDateStart),
-        bookingEndDate: new Date(bookingDateEnd),
+        bookingStartDate: new Date(bookingDateStart) + 1,
+        bookingEndDate: new Date(bookingDateEnd) + 1,
         invoice,
         itemId: {
           _id: item._id,
