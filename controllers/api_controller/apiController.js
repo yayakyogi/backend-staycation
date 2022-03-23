@@ -7,6 +7,7 @@ const Member = require("../../models/Member");
 const Booking = require("../../models/Booking");
 const createError = require("http-errors");
 const mongoose = require("mongoose");
+const formatDate = require("../../utils/formatDate");
 
 module.exports = {
   // end point landing page
@@ -166,8 +167,8 @@ module.exports = {
 
       // variabel data booking baru
       const newBooking = {
-        bookingStartDate: new Date(bookingDateStart) + 1,
-        bookingEndDate: new Date(bookingDateEnd) + 1,
+        bookingStartDate: formatDate(bookingDateStart),
+        bookingEndDate: formatDate(bookingDateEnd),
         invoice,
         itemId: {
           _id: item._id,
