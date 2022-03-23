@@ -1,5 +1,5 @@
 module.exports = {
-  formateDate: () => {
+  formateDate: (date) => {
     const d = new Date(date);
     const dtf = new Intl.DateTimeFormat("en", {
       year: "numeric",
